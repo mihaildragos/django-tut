@@ -58,6 +58,8 @@ class Book(models.Model):
     
     display_genre.short_description = 'Genre'
 
+    
+
 
 class BookInstance(models.Model):
     """Model representing a specific copy of a book (i.e. that can be borrowed from the library)."""
@@ -87,6 +89,9 @@ class BookInstance(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return f'{self.id} ({self.book.title})'
+    
+    def get_full_book_name(self):
+        return f'{self.book.title} - {self.book.author}'
 
 
 
@@ -106,4 +111,7 @@ class Author(models.Model):
 
     def __str__(self):
         """String for representing the Model object."""
-        return f'{self.last_name}, {self.first_name}'		
+        return f'{self.last_name}, {self.first_name}'
+    
+    class Meta:
+        ordering = ['last_name']
