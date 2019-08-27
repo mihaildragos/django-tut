@@ -16,6 +16,8 @@
         {% endfor %}
     </dl>
 
-
+    <form action="{{author.get_absolute_url}}/delete" method="get">
+        <input type="submit" value='Delete author'>
+    </form>
 </div>
 {% endblock %}

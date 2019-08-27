@@ -1,16 +1,20 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Authors List</h1>
-  {% if author_list %}
-  <ul>
+<h1>Authors List</h1>
+<form action="/catalog/author/create" method="get">
+    <input type="submit" value="Add new author">
+</form>
+{% if author_list %}
+<ul>
     {% for author in author_list %}
-      <li>
+    <li>
         <a href="{{ author.get_absolute_url }}">{{ author }}</a>
-      </li>
+    </li>
     {% endfor %}
-  </ul>
-  {% else %}
-    <p>There are no authors in the library.</p>
-  {% endif %}       
+</ul>
+{% else %}
+<p>There are no authors in the library.</p>
+{% endif %}
+
 {% endblock %}
